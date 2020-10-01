@@ -1,6 +1,7 @@
+#!/bin/bash
 git add .
 git commit -m 'daily commit'
 
-ggpull
+git pull origin master
 
-ggpush
+git push origin master
