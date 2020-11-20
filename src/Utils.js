@@ -1,3 +1,4 @@
+// 数组 转 链表
 const arrToLink = (arr = []) => {
   let head = null
   let cur = null
@@ -14,6 +15,8 @@ const arrToLink = (arr = []) => {
 
   return head
 }
+
+// 打印链表
 const printLink = (a) => {
   while (a) {
     console.log(a.value)
