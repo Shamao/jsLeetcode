@@ -6,8 +6,8 @@ const arrToLink = (arr = []) => {
       head = { value: item }
       cur = head
     } else {
-      cur.next = {value: item}
-      cur = cur.next 
+      cur.next = { value: item }
+      cur = cur.next
     }
     // console.log(cur)
   })
@@ -23,9 +23,22 @@ const printLink = (a) => {
 
 // 反转链表
 const reverseLink = (root) => {
-  return null
+  let pre = null
+  let cur = root
+
+  while (cur) {
+    let next = cur.next
+    cur.next = pre 
+    pre = cur
+    cur = next
+  }
+
+  return pre
 }
+
+
 module.exports = {
   arrToLink,
   printLink,
+  reverseLink,
 }
