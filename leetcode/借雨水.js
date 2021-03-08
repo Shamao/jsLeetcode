@@ -1,7 +1,7 @@
 const { max } = require("lodash")
 
 // 备忘录算法
-let arr = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
+let arr = [1, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
 
 const maxL = []
 const maxR = []
@@ -21,7 +21,9 @@ for (let i = arr.length - 2; i >= 0; i--) {
 
 let ret = 0
 for (let i = 1; i < arr.length - 1; i++) {
-  ret += Math.min(maxL[i], maxR[i]) - arr[i]
+  const temp = Math.min(maxL[i], maxR[i]) - arr[i]
+  console.log(`可接受 ${temp}`)
+  ret += temp
 }
 
 console.log(ret)
@@ -31,27 +33,33 @@ console.log(ret)
 
 // 双指针算法 nb
 
-arr = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
+// arr = [1, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
 const length = arr.length
-let left = 0;
+
+let left = 1;
 let right = length - 1
-let l_max = arr[0]
+let l_max = arr[1]
 let r_max = arr[length - 1]
 
 let ret2 = 0
+console.log(`${left} =  ${right}`)
 while (left < right) {
   l_max = Math.max(arr[left], l_max)
   r_max = Math.max(arr[right], r_max)
-  console.log(arr[left], l_max, arr[right], r_max)
+  // console.log(arr[left], l_max, arr[right], r_max)
+  let tempRet = 0
   if (l_max < r_max) {
-    ret2 += l_max - arr[left]
+    tempRet = l_max - arr[left]
+    console.log(`${left} =  ${right}可接受 ${tempRet}`)
     left++
-    console.log(`Left = ${ret2}`)
   } else {
-    ret2 += r_max - arr[right]
+    tempRet = r_max - arr[right]
+    console.log(`${left} =  ${right}可接受 ${tempRet}`)
     right--
-    console.log(`Right = ${ret2}`)
   }
+
+  // console.log(``)
+  ret2 += tempRet
 }
 
 console.log(ret2)
